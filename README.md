@@ -1,10 +1,10 @@
 # STAT260 - Web Scrapping Project
 
 ## Requirement:
-Because every website have a different build structure, in this particular report, we will scrap data from [Trustpilot](https://ca.trustpilot.com/review/www.apple.com)  
-Quick knowledge about HTML, each HTML element will be associated with a class, id, element tag,. . . So we will use those to distinct and extract the element that we want.  
-To be more efficient, we will use element selector gadget, you can read more about the usage instruction in the website.
-We will also use these R packages: tidyverse, rvest, stringr, lubridate. Detail of the packages is in the below  
+Because every website have a different build structure, in this particular report, I will scrap data from [Trustpilot](https://ca.trustpilot.com/review/www.apple.com)  
+Quick knowledge about HTML, each HTML element will be associated with a class, id, element tag,. . . So I will use those to distinct and extract the element that I want.  
+To be more efficient, I will use element selector gadget, you can read more about the usage instruction in the website.
+I will also use these R packages: tidyverse, rvest, stringr, lubridate. Detail of the packages is in the below  
 
 ## Outline steps:
 1. Find the number of the last page
@@ -33,7 +33,7 @@ first_page <- read_html(url)
 `read_html()` will read from the URL, and return the source html code
 
 ## Generate a vector that store all pages
-Because this website reviews other company’s website, each company’s website will have different number of pages depends on how popular the site. Because of that, we make a function that will return the last page number of a particular company it review (Apple.com in this case) so we can reuse in the future for other company.
+Because this website reviews other company’s website, each company’s website will have different number of pages depends on how popular the site. Because of that, I make a function that will return the last page number of a particular company it review (Apple.com in this case) so I can reuse in the future for other company.
 
 ```R
 get_last_page <- function(html) { pages_data <- html %>%
@@ -76,10 +76,10 @@ get_review_date <- function(html) {
 }
 ```
 
-- Same as above, we use element selector gadget to select element that we want to scrap, copy that into `rvest::html_nodes()` then extract the text using `rvest::html_text()`. `stringr::str_trim()` to trim the white space at the start and end of the content. The result is a vector with all the comment.
-- The date is a bit tricky, it’s a string contains unnecessary letter so we use RegEx and `stringr::str_match()` to extract the date part only, then convert to data format using `lubridate::mdy()`
+- Same as above, I use element selector gadget to select element that I want to scrap, copy that into `rvest::html_nodes()` then extract the text using `rvest::html_text()`. `stringr::str_trim()` to trim the white space at the start and end of the content. The result is a vector with all the comment.
+- The date is a bit tricky, it’s a string contains unnecessary letter so I use RegEx and `stringr::str_match()` to extract the date part only, then convert to data format using `lubridate::mdy()`
 
-Last part is the rating, because it’s a picture type so instead of reading the section content, we will read the attribute content instead
+Last part is the rating, because it’s a picture type so instead of reading the section content, I will read the attribute content instead
 
 ```R
 get_review_rate <- function(html) { html %>%
@@ -92,11 +92,11 @@ get_review_rate <- function(html) { html %>%
 ```
 - `rvest::html_attrs()` read the attributes in that node
 - `purrr::map()` select the first attribute in this case, because it contain the number of stars reviewing.
-- Then we use `stringr::str_extract()` and RegEx again to extract the useful content which is the
+- Then I use `stringr::str_extract()` and RegEx again to extract the useful content which is the
 star number
 
 ## Combine the data into a single comprehensive data frame
-Finally, we will write a function to combine all the function above and make data frame from a single URL then another function to combine all the data frame into a tibble
+Finally, I will write a function to combine all the function above and make data frame from a single URL then another function to combine all the data frame into a tibble
 ```R
 get_data_table <- function(url, companyName) {
     html <- read_html(url)
@@ -113,8 +113,8 @@ get_data_table <- function(url, companyName) {
         select(company, reviewer, date, rate, comment)
 }
 ```
-After have all the vector such as reviewer name, comment, date, rate, we combine them as a tibble, `dplyr::mutate()` new column that contains company name, then `dplyr::select()` to arrange columns keep the consistent of all tibbles  
-Now we will write a function with loop control that will read all the page of that particular company
+After have all the vector such as reviewer name, comment, date, rate, I combine them as a tibble, `dplyr::mutate()` new column that contains company name, then `dplyr::select()` to arrange columns keep the consistent of all tibbles  
+Now I will write a function with loop control that will read all the page of that particular company
 ```R
 scrape_write_table <- function(url, companyName) {
     first_page = read_html(url)
@@ -129,8 +129,8 @@ scrape_write_table <- function(url, companyName) {
 }
 ```
 - `dplyr::bind_rows()` combine first tibble input and second tibble input
-- We loop until the end of the `list_of_pages`, then export the tibble data frame.
-We will have the output as follow
+- I loop until the end of the `list_of_pages`, then export the tibble data frame.
+I will have the output as follow
 ```R
 (data <- scrape_write_table(url, "APPLE"))
 ```
