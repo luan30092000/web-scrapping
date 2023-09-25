@@ -164,7 +164,8 @@ https://ca.trustpilot.com/review/www.canadianappliance.ca
 https://ca.trustpilot.com/review/www.apple.com
 https://github.com/abhimotgi/dataslice/blob/master/R/Web%20Scraping%20with%20RVest%20Part%201.R
 https://www.youtube.com/watch?v=v8Yh_4oE-Fs&t=209s 
-https://www.datacamp.com/tutorial/r-web-scraping-rvest https://axiom.ai/blog/5-problems-webscrapers.html
+https://www.datacamp.com/tutorial/r-web-scraping-rvest 
+https://axiom.ai/blog/5-problems-webscrapers.html
 
 # Extra information about lab work.
 ## Lab 1
