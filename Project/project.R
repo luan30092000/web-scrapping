@@ -2,7 +2,7 @@
 library(tidyverse)    # general purpose data wrangling
 library(rvest)        # parsing of HTML/XML file
 library(stringr)      # string manipulation
-library(rebus)        # verbose regular expression
+# library(rebus)        # verbose regular expression
 library(lubridate)    # Datetime manipulation
 
 # Scrapping website
@@ -84,7 +84,6 @@ get_data_table <- function(html, companyName) {
 scrape_write_table <- function(url, companyName) {
   first_page = read_html(url)
   last_page_number = get_last_page(first_page)
-  last_page_number = 10
   list_of_pages <- str_c(url, '?page=', 1:last_page_number)
   dataTibble <- NULL
   for(i in 1:length(list_of_pages)) {
@@ -94,3 +93,4 @@ scrape_write_table <- function(url, companyName) {
   return(dataTibble)
 }
 data <- scrape_write_table(url, "APPLE")
+write.csv(data, file = "appleReview.csv")

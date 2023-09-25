@@ -19,6 +19,6 @@ temp <- html_source %>%
   html_nodes('.temp') %>%
   html_text()
 
-tbl <- tibble(period, short_desc, temp)
+tbl <- tibble(period = period, short_desc = short_desc, temp = temp)
 write.table(tbl, "301571025.csv", sep = ",", row.names = F,
-            col.names =F)
+            col.names = T)
