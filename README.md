@@ -151,13 +151,13 @@ We will have the output as follow
 ## # ... with 5,845 more rows
 ```
 ## Problem note
-1. Website update
+1. **Website update**:
 One obvious problem is that the website owner decide to change the webpage like upgrade, update, changing structure     of the site which will require us to review the code
-2. Rate limited
+2. **Rate limited**:
 I was trying to scrap a company with 57,599 reviewer in 2537 pages which mean require 2537 request to the server, after ran the code, my IP address was being block from further access to the website to prevent server overload or even DDoS attack. In such case, I would either set up a proxy server or limited the rate to wait a couple minutes or even hours between each request
-3. Inconsistent data
+3. **Inconsistent data**:
 During scrapping, I noticed some inconsistencies of the website, such as some review will have no comment but only title and rate, which will lead to inconsistent length between vector which can leads to error or incorrect tibble. In such case, I would extract data by each comment which will be much longer
-4. UI Interaction
+4. **UI Interaction**:
 Some data will only show up after an interaction such as click a button for data to show up. In such case, there is API or click bot that can help you with this.
 ## Citation list
 https://ca.trustpilot.com/review/www.canadianappliance.ca https://ca.trustpilot.com/review/www.apple.com
