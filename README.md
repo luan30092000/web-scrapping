@@ -1,10 +1,10 @@
 # STAT260 - Web Scrapping Project
 
 ## Requirement:
-Because every website have a different build structure, in this particular report, we will scrap data from [Trustpilot](https://ca.trustpilot.com/review/www.apple.com)
-Quick knowledge about HTML, each HTML element will be associated with a class, id, element tag,. . . So we will use those to distinct and extract the element that we want.
+Because every website have a different build structure, in this particular report, we will scrap data from [Trustpilot](https://ca.trustpilot.com/review/www.apple.com)  
+Quick knowledge about HTML, each HTML element will be associated with a class, id, element tag,. . . So we will use those to distinct and extract the element that we want.  
 To be more efficient, we will use element selector gadget, you can read more about the usage instruction in the website.
-We will also use these R packages: tidyverse, rvest, stringr, lubridate. Detail of the packages is in the below
+We will also use these R packages: tidyverse, rvest, stringr, lubridate. Detail of the packages is in the below  
 
 ## Outline steps:
 1. Find the number of the last page
@@ -113,7 +113,7 @@ get_data_table <- function(url, companyName) {
         select(company, reviewer, date, rate, comment)
 }
 ```
-After have all the vector such as reviewer name, comment, date, rate, we combine them as a tibble, `dplyr::mutate()` new column that contains company name, then `dplyr::select()` to arrange columns keep the consistent of all tibbles
+After have all the vector such as reviewer name, comment, date, rate, we combine them as a tibble, `dplyr::mutate()` new column that contains company name, then `dplyr::select()` to arrange columns keep the consistent of all tibbles  
 Now we will write a function with loop control that will read all the page of that particular company
 ```R
 scrape_write_table <- function(url, companyName) {
